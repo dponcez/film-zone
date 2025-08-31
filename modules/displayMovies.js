@@ -1,5 +1,6 @@
 import { selector, createElement, handler } from '../_fns/custom-functions.js';
 import { rateByClass } from './rateByClass.js';
+import { smoothScrollAnimation } from './scrollAnimation.js'  ;
 
 export const displayMovie = (movies, error) => {
   const IMG_PATH_URL = "https://image.tmdb.org/t/p/w1280";
@@ -7,10 +8,17 @@ export const displayMovie = (movies, error) => {
   main.innerHTML = '';
 
   if(error) main.innerHTML = `<p class="info">${error}</p>`;
-  if(!movies || movies.length === 0) main.innerHTML = `<p class="info">No movie found!</p>`;
+  if(!movies || movies.length === 0){
+    main.innerHTML = `
+      <div class="not--found">
+        <p class="info">No movie found!</p>
+        <i class="fas-fa fa-ticket"></i>
+      </div>
+    `;
+  }
 
   movies.forEach(movie => {
-    const { title, poster_path, vote_average, overview } = movies;
+    const { title, poster_path, vote_average, overview } = movie;
     const section = createElement('section');
     section.classList.add('movie');
 
@@ -29,4 +37,5 @@ export const displayMovie = (movies, error) => {
     main.appendChild(section);
   });
 
+  handler(document, 'DOMContentLoaded', smoothScrollAnimation('.movie'));
 }
