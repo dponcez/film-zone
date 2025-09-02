@@ -11,7 +11,7 @@ import { debounce } from '../utils/debounce.js';
   * ('https://api.../search?query=') 
 */
 
-export const searchMovies = (search_movie_url, reloadFn = () => window.location.reload()) => {
+export const searchMovie = (search_movie_url, reloadFn = () => window.location.reload()) => {
   const search = selector('[data-search]');
   const form = selector('[data-form]');
   const main = selector('[data-main]');
