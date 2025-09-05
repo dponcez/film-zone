@@ -12,7 +12,7 @@ export const displayMovie = (movies, error) => {
     main.innerHTML = `
       <div class="not--found">
         <p class="info">No movie found!</p>
-        <i class="fas-solid fa-ticket"></i>
+        <i class="fa-solid fa-ticket"></i>
       </div>
     `;
   }
