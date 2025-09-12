@@ -14,4 +14,4 @@ export const fetchMovie = async (url) => {
     displayMovie([], error.message);
     return [];
   }
-};
+}
